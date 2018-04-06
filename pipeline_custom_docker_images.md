@@ -46,7 +46,7 @@ There is large vibrant community of repositories you can use at DockerHub. IBM h
 
 If you are using a private registry that requires authentication you will need to set two additional stage environment properties: `DOCKER_USERNAME` and `DOCKER_PASSWORD`. To mask your DOCKER_PASSWORD you can use a "secure property. Before your image is pulled the custom docker image job will perform a `docker login` using the username and password credentials you supplied.
 
-For example, if using IBM Cloud Registry to store your private images you can use a platform API Key for authentication. First request a Platform API Key here and then carefully save it! Create the two stage environment properties using `iamapikey` for your `DOCKER_USERNAME` and the API Key that you saved earlier for the `DOCKER_PASSWORD`.
+For most registries use the username/password you were given, but if using IBM Cloud Registry to store your private images you use a platform API Key for authentication. First request a Platform API Key (https://console.bluemix.net/iam/#/apikeys)and then be careful to save it! Create the two stage environment properties using `iamapikey` for your `DOCKER_USERNAME` and the API Key that you saved earlier for the `DOCKER_PASSWORD`.
 ![IBM Cloud Registry credentials](images/custom-image-private-repository.png "IBM Cloud Registry credentials")
 ```
 Note: Prod is using `DOCKER_USER` instead of `DOCKER_USERNAME`. This will be fixed shortly on April 10th. `DOCKER_USER` will still work but be undocumented!
@@ -54,9 +54,10 @@ Note: Prod is using `DOCKER_USER` instead of `DOCKER_USERNAME`. This will be fix
 
 ## Specifying the Script ##
 
-The **script** block in custom docker image jobs is used to create a script file that will be executed in a task folder  `/home/pipeline/$TASK_ID/` similar to how regular pipeline jobs work. One thing to recognize is that the docker images `ENTRYPOINT` and `CMD` are over-ridden and **will not** be called. In some cases you might have to directly run an `ENTRYPOINT` initialization step.
+The **script** block in custom docker image jobs is used to create a script file that will be executed in a task folder
+similar to how regular pipeline jobs work. One thing to recognize is that the docker images `ENTRYPOINT` and `CMD` are over-ridden and **will not** be called. In some cases you might have to directly run an `ENTRYPOINT` initialization step.
 
-Custom docker image jobs however give you greater flexibility of how to run your script and in particular will let you control the command interpreter. If your "script" provides no "shebang" style interpreter the default shell for your image will be used. A better practice is to declare your command interpreter and typically `#!/bin/bash` or `#!/bin/sh` are used but with an appropriate docker image command interpreters for `awk`, `node` and `ruby` will also work.
+Custom docker image jobs however give you greater flexibility of how to run your script and in particular will let you control the command interpreter. As usual, if the first line of the script begins with #! and the name of a command interpreter, that will be used to execute the commands in the job. If you do not specify a command interpreter, the default shell for the docker image will be used. Typically `#!/bin/bash` or `#!/bin/sh` are used but with an appropriate docker image command interpreters for `awk`, `node` and `ruby` will also work.
 
 
 
