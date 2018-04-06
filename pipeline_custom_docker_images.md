@@ -32,7 +32,7 @@ a Build job using Maven 3.5.3 and IBM Java you would use:
 
 ## Specifying the Docker image name
 
-The **docker image name** in custom docker image jobs is designed to work the same way as image names do with the Docker CLI. For example, for `docker run maven:3.5.3-ibmjava`, the docker image name is `maven:3.5.3-ibmjava`. 
+The **docker image name** in custom docker image jobs is designed to work the same way as image names do with the Docker CLI. For example, for `docker run maven:3.5.3-ibmjava`, the docker image name is `maven:3.5.3-ibmjava`. The one exception is if this field is left blank in which case the "standard pipeline base image" will be used as a default. Apart from that there are no restrictions and any docker image should work.
 
 A docker image name consists of `[repository][:][tag]`. In our example, our repository is `maven` and our tag is `3.5.3-ibmjava`. 
 
@@ -51,4 +51,12 @@ For example, if using IBM Cloud Registry to store your private images you can us
 ```
 Note: Prod is using `DOCKER_USER` instead of `DOCKER_USERNAME`. This will be fixed shortly on April 10th. `DOCKER_USER` will still work but be undocumented!
 ```
+
+## Specifying the Script ##
+
+The **script** block in custom docker image jobs is used to create a script file that will be executed in a task folder  `/home/pipeline/$TASK_ID/` similar to how regular pipeline jobs work. One thing to recognize is that the docker images `ENTRYPOINT` and `CMD` are over-ridden and **will not** be called. In some cases you might have to directly run an `ENTRYPOINT` initialization step.
+
+Custom docker image jobs however give you greater flexibility of how to run your script and in particular will let you control the command interpreter. If your "script" provides no "shebang" style interpreter the default shell for your image will be used. A better practice is to declare your command interpreter and typically `#!/bin/bash` or `#!/bin/sh` are used but with an appropriate docker image command interpreters for `awk`, `node` and `ruby` will also work.
+
+
 
