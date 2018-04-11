@@ -42,15 +42,14 @@ The image's `tag` is optional and if not set defaults to `latest` although you s
 
 There is large vibrant community of repositories you can use at DockerHub. IBM hosts a number of public repositories at  (https://hub.docker.com/u/ibmcom/) that the IBM Cloud team uses. `ibmcom/ibmjava` and `ibmcom/ibmnode` are particularly useful to build upon. 
 
-### Using a private registry image ###
+
+### Using a private registry image registry ###
 
 If you are using a private registry that requires authentication you will need to set two additional stage environment properties: `DOCKER_USERNAME` and `DOCKER_PASSWORD`. To mask your DOCKER_PASSWORD you can use a "secure property. Before your image is pulled the custom docker image job will perform a `docker login` using the username and password credentials you supplied.
 
 For most registries use the username/password you were given, but if using IBM Cloud Registry to store your private images you use a platform API Key for authentication. First request a Platform API Key (https://console.bluemix.net/iam/#/apikeys)and then be careful to save it! Create the two stage environment properties using `iamapikey` for your `DOCKER_USERNAME` and the API Key that you saved earlier for the `DOCKER_PASSWORD`.
 ![IBM Cloud Registry credentials](images/custom-image-private-repository.png "IBM Cloud Registry credentials")
-```
-Note: Prod is using `DOCKER_USER` instead of `DOCKER_USERNAME`. This will be fixed shortly on April 10th. `DOCKER_USER` will still work but be undocumented!
-```
+
 
 ## Specifying the Script ##
 
