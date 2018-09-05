@@ -128,7 +128,7 @@ All links are in the home directory.
 |Gradle 4.10 |gradle4 |/opt/IBM/gradle4 |
 |IBM Java (default)|java |/opt/IBM/java8 |
 |IBM Java 7 x86_64-71 |java7 |/opt/IBM/java7 |
-|IBM Java 1.8.0_sr5fp21|java8 |/opt/IBM/java8 |
+|IBM Java 8.0.5.21|java8 |/opt/IBM/java8 |
 |Apache Maven 3.2.1 |maven |/opt/IBM/maven |
 |Apache Maven 3.5.4 |maven3 |/opt/IBM/maven3 |
 |IBM Node 8.11.3|node|/opt/IBM/node-v8.11.3|
