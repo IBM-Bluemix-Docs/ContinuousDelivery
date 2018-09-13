@@ -74,6 +74,8 @@ The following properties and resources are available by default in pipeline envi
 | PIPELINE_STAGE_INPUT_JOB_ID | The ID of the job that is input for the current stage. |
 | PIPELINE_STAGE_INPUT_REV | The revision of the input for the current stage. |
 | PIPELINE_INITIAL_STAGE_EXECUTION_ID | The unique ID for the run of the pipeline. |
+| PIPELINE_BLUEMIX_API_KEY | The API key provided for the continous delivery pipeline|
+| PIPELINE_TRIGGERING_USER | The current user for the pipeline job|
 | TASK_ID | The unique ID of the job's current run. |
 | TMPDIR | A directory location where temporary files are stored. |
 | WORKSPACE | The path for the current working directory. |
@@ -82,16 +84,17 @@ The following properties and resources are available by default in pipeline envi
 
 | Environment property | Description |
 |-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| ANT_HOME | The path to Apache Ant 1.9.2. |
+| ANT_HOME | The path to Apache Ant 1.10.5. |
 | ANT_JAVA8_HOME | The path to a 1.10+ version of Apache Ant that requires Java 8. |
-| GRADLE_HOME | The path to Gradle 1.11. |
-| JAVA_HOME | The path to IBM&reg; Java&trade; 7. |
+| GRADLE_HOME | The path to Gradle 4.10. |
+| JAVA_HOME | The path to IBM&reg; Java&trade; 8. |
 | JAVA7_HOME | The path to IBM Java 7. |
 | JAVA8_HOME | The path to IBM Java 8. |
-| MAVEN_HOME | The path to Apache Maven 3.2.1. |
-| NODE_HOME | The path to Node.js 0.10.29. |
+| MAVEN_HOME | The path to Apache Maven 3.5.4. |
+| NODE_HOME | The path to Node.js 8.11.3. |
 
-You can use the 1.10+ version of Apache Ant in your pipeline's scripts by setting `ANT_HOME` to `$ANT_JAVA8_HOME` and `JAVA_HOME` to `$JAVA8_HOME`.
+If you want to find out what the default versions of the main tools are, you can run the following command inside your script:
+`$HOME/default_versions.sh`
 {: tip}
 
 ### Deployment properties
@@ -118,39 +121,40 @@ All links are in the home directory.
 
 | Resource | Link name | Path |
 |----------|-----------|-----------|
-|Apache Ant 1.9.2|ant |/opt/IBM/ant |
-|Cloud Foundry CLI 6.14 |cf | /opt/IBM/cf |
+|Apache Ant 1.10.5|ant |/opt/IBM/ant.java8 |
+|Cloud Foundry CLI 6.29.0 |cf | /opt/IBM/cf |
 |Gradle 1.12|gradle |/opt/IBM/gradle |
 |Gradle 2.9 |gradle2 |/opt/IBM/gradle2 |
-|IBM Java (default)|java |/opt/IBM/java |
+|Gradle 4.10 |gradle4 |/opt/IBM/gradle4 |
+|IBM Java (default)|java |/opt/IBM/java8 |
 |IBM Java 7 x86_64-71 |java7 |/opt/IBM/java7 |
-|IBM Java 8 x86_64-80|java8 |/opt/IBM/java8 |
+|IBM Java 8.0.5.21|java8 |/opt/IBM/java8 |
 |Apache Maven 3.2.1 |maven |/opt/IBM/maven |
-|IBM Node |node |/opt/IBM/node |
+|Apache Maven 3.5.4 |maven3 |/opt/IBM/maven3 |
+|IBM Node 8.11.3|node|/opt/IBM/node-v8.11.3|
 |IBM Rational Team Concert&trade; SCM Tools |RTC-SCM-Tools |/opt/IBM/RTC-SCM-Tools |
 
-64-bit versions of IBM Node 0.10, 0.10.48, 0.12, 0.12.17, 4.2, 4.4.5, 4.6.0, 6.2.2, and 6.7.0 are available in the pipeline environment. To choose a version, use the export command.
-
-For example, to use Node 0.12.7, enter this command:
-`export PATH=/opt/IBM/node-v0.12/bin:$PATH`
-
-To use Node 4.2.2, enter this command:
-`export PATH=/opt/IBM/node-v4.2/bin:$PATH`
+Different versions of Node.js have been preinstalled in the pipeline. The command `nvm` is used to choose which version should be used. The preinstalled versions list is v0.10.40, v0.10.48, v0.12.7, v0.12.17, v4.2.2, v4.4.5, v4.6.0, v6.2.2, v6.7.0, v8.11.3, v9.11.2, v10.8.0.
+The default version of Node.js is v8.11.3.
+For example, to use node 6.7.0, enter this command `nvm use v6.7.0`.
+If you want to use a version of Node.js that is not listed above, please use the `nvm install` command.
+For example, if you want to use v8.0.0, enter this command: `nvm install 8.0.0`. This will install version 8.0.0 and set it as the default version.
+If your script used to install a specific version of npm using a command like `npm install -g npm@3.7.1`, it might no longer work if the version you are targetting is lower than the default version in the pipeline. The version of npm that comes with Node.js 8.11.3 is 5.6.0. In order to fix your script, you can either remove that command completely or run the command `nvm use v6.7.0` which uses npm version 3.10.3.
 
 ### Node modules
 
 The following Node modules are globally installed in the pipeline environment:
 
-* grunt@0.4.5
-* grunt-cli@0.1.13
-* grunt-contrib-concat@0.4.0
-* grunt-contrib-jshint@0.10.0
-* grunt-contrib-nodeunit@0.4.1
-* grunt-contrib-qunit@0.5.1
-* grunt-contrib-uglify@0.5.0
-* grunt-contrib-watch@0.6.1
-* karma@0.12.23
-* karma-cli@0.0.4
-* karma-jasmine@0.1.5
-* karma-phantomjs-launcher@0.1.4
-* phantomjs@1.9.10
+* grunt@1.0.3
+* grunt-cli@1.3.0
+* grunt-contrib-concat@1.0.1
+* grunt-contrib-jshint@1.1.0
+* grunt-contrib-nodeunit@2.0.0
+* grunt-contrib-qunit@3.0.1
+* grunt-contrib-uglify@3.4.0
+* grunt-contrib-watch@1.1.0
+* karma@3.0.0
+* karma-cli@1.0.1
+* karma-jasmine@1.1.2
+* karma-phantomjs-launcher@1.0.4
+* phantomjs-prebuilt@2.1.7
