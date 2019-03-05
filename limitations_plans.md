@@ -26,21 +26,22 @@ The use of {{site.data.keyword.contdelivery_full}} is limited to the building, d
  * Users who interact with issues, issues boards, source code, or other artifacts in a {{site.data.keyword.gitrepos}} repository.
  * Users who manipulate, trigger (either directly in the UI or indirectly by committing to a repo), or view the status of a delivery pipeline.
  * Users who interact with the Eclipse Orion {{site.data.keyword.webide}}.
- 
+
 ### How are users counted for instances of {{site.data.keyword.contdelivery_short}} in orgs?
 
-Authorized users are counted by looking at all of the users in the Cloud organization (org) that contains the {{site.data.keyword.contdelivery_short}} service. 
+Authorized users are counted by looking at all of the users in the Cloud organization (org) that contains the {{site.data.keyword.contdelivery_short}} service.
 
-To view the list of users in your org in an {{site.data.keyword.Bluemix_notm}} Public environment, from the menu bar, click **Manage > Account > Cloud Foundry Orgs**.
+To view the list of users in your org in an {{site.data.keyword.Bluemix_notm}} Public environment, from the menu bar, click **Manage > Account**. Click **Cloud Foundry Orgs**.
 
 To view the list of users in your org in an {{site.data.keyword.Bluemix_notm}} Dedicated environment, from the menu bar, click **Account > Manage Organizations**.
 
 You can also view all of the instances of the {{site.data.keyword.contdelivery_short}} service in your account and the number of users that are reported against each instance in an {{site.data.keyword.Bluemix_notm}} Public environment.
 
-1. From the menu bar, click **Manage > Billing and Usage > Usage**.
-2. Click **Usage Dashboard**.
-3. From the Account menu, click **Cloud Foundry Orgs**.
-4. Click the org that you want to view usage information for.
+1. From the menu bar, click **Manage > Billing and Usage**.
+2. Click **Usage**.
+3. In the **Services** section, click **View plans** next to the {{site.data.keyword.contdelivery_short}} service.
+4. Click **View details** next to the plan.
+5. Click **View instance details** next to the org that you want to view usage information for.
 
 To view all of the instances of the {{site.data.keyword.contdelivery_short}} service in your account and the number of users that are reported against each instance in an {{site.data.keyword.Bluemix_notm}} Dedicated environment:
 
@@ -49,18 +50,19 @@ To view all of the instances of the {{site.data.keyword.contdelivery_short}} ser
 
 ### How are users counted for instances of {{site.data.keyword.contdelivery_short}} in resource groups?
 
-Authorized users are counted by looking at the list of users on the Manage tab within the  {{site.data.keyword.contdelivery_short}} service instance. 
+Authorized users are counted by looking at the list of users on the Manage tab within the  {{site.data.keyword.contdelivery_short}} service instance.
 
 To view the list of authorized users, open the service instance dashboard and click the Manage tab.
 
 You can also view all of the instances of the {{site.data.keyword.contdelivery_short}} service in your account and the number of users that are reported against each instance.
 
-1. From the menu bar, click **Manage > Billing and Usage > Usage**.
-2. Click **Usage Dashboard**.
-3. From the Account menu, click **Resource Groups**.
-4. Click the resource group that you want to view usage information for.
+1. From the menu bar, click **Manage > Billing and Usage**.
+2. Click **Usage**.
+3. In the **Services** section, click **View plans** next to the {{site.data.keyword.contdelivery_short}} service.
+4. Click **View details** next to the plan.
+5. Click **View instance details** next to the resource group that you want to view usage information for.
 
-### What happens when you exceed the limits of your service plan? 
+### What happens when you exceed the limits of your service plan?
 
 Some service plans might have other limitations, such as the number of Delivery Pipeline jobs that can be run or the storage consumption. For more information, see the plan description in the catalog. If any of the plan limitations are exceeded in a billing period, the service might suspend. For example, Delivery Pipeline jobs might not run for the remainder of the billing period.
 
