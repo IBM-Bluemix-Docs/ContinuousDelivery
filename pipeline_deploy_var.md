@@ -63,6 +63,7 @@ The following table lists and describes each of the general-purpose environment 
 | IDS_VERSION | The number for the build that is being deployed or the SCM identifier. This property is available only in deploy jobs.
 | JOB_NAME | The unique job ID in the context of the current pipeline. |
 | PIPELINE_ARTIFACT_URL | The URL that you can use to download the artifacts of the current Build job after the job completes. You must use a valid Bearer token to access the artifacts. |
+| PIPELINE_IMAGE_URL | The URL of the container image built by a Container Registry build job. This property is only present in a job whose stage input is a Container Registry build job |
 | PIPELINE_INITIAL_STAGE_EXECUTION_ID | The unique ID for the run of the pipeline. |
 | PIPELINE_KUBERNETES_CLUSTER_NAME | The name of the Kubernetes cluster that is selected in the current job. |
 | PIPELINE_LOG_URL | The URL that you can use to download the log file of the current job after the job completes. You must use a valid Bearer token to access the log files. |
