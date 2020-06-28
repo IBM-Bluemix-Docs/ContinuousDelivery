@@ -83,7 +83,7 @@ Security constraints might prevent you from pulling images from the gcr.io/tekto
 ## Installing a {{site.data.keyword.deliverypipeline}} Private Worker
 {: #install_pw}  
 
-{{site.data.keyword.deliverypipeline}} private workers depend on the tekton and tekton-pipelines infrastructure. Private workers must pull tekton-releases images from `gcr.io` (`gcr.io/tekton-releases`) and DockerHub (`ibmcom/pipeline-private-worker`). You might need to define a specific Kubernetes ClusterImagePolicy to pull images from these container registries.
+{{site.data.keyword.deliverypipeline}} private workers depend on the tekton and tekton-pipelines infrastructure. Private workers must pull tekton-releases images from `gcr.io` (`gcr.io/tekton-releases`) and DockerHub (`ibmcom/pipeline-private-worker`). You might need to define a specific Kubernetes ClusterImagePolicy to pull images from these container registries. You will need to [install a couple of helm charts](https://cloud.ibm.com/docs/Registry?topic=Registry-security_enforce) to add the CusterImagePolicy type your Kubernetes cluster.
 {: tip}
 
 For example, in {{site.data.keyword.cloud_notm}} Private, type the following commands to define a specific Kubernetes ClusterImagePolicy for `ibmcom/*` and `gcr.io/tekton-releases`:
