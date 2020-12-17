@@ -212,7 +212,7 @@ When you configure a {{site.data.keyword.deliverypipeline}} tool integration, yo
  e. Repeat steps a and b to add each of the following paths to the master branch within your Git repo:
  
   * `git`
-  * `util`
+  * `utils`
   * `cra`
   * `cra/sample`
  
