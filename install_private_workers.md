@@ -179,7 +179,7 @@ oc adm policy add-scc-to-user anyuid system:serviceaccount:tekton-pipelines:tekt
 * Add the tekton-pipelines-controller service account to the privileged SCC. Services that use this SCC can run pods with privileged access and use hostpath persistent volumes.
 
 ```
-oc adm policy add-scc-to-user privileged system:serviceaccount:tekton-pipelines:tekton-pipelines-controller
+oc adm policy add-scc-to-user privileged system:serviceaccount:tekton-pipelines:private-worker-agent
 
 ```
 
@@ -208,7 +208,7 @@ oc adm policy remove-scc-from-user anyuid system:serviceaccount:tekton-pipelines
 * Remove privileged SCCs from the tekton-pipelines-controller service account.
 
 ```
-oc adm policy remove-scc-from-user privileged system:serviceaccount:tekton-pipelines:tekton-pipelines-controller
+oc adm policy remove-scc-from-user privileged system:serviceaccount:tekton-pipelines:private-worker-agent
 
 ```
 
