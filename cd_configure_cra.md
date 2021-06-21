@@ -276,9 +276,9 @@ The following table lists and describes each of the supported environment proper
 ## Configuring Code Risk Analyzer to ignore files
 {: #cra_ignore_files}
 
-The Code Risk Analyzer Discovery task searches for a `.craignore` file in the repo that is cloned and scanned. The `.craignore` file must follow the rules of [`.gitignore` files](https://git-scm.com/docs/gitignore){: external}. Similar to a `.gitignore` file, the `.craignore` file can include comments, directories to ignore, files to ignore, and other [patterns](https://git-scm.com/docs/gitignore#_pattern_format){: external}.
+Code Risk Analyzer Discovery and CIS tasks search for the file path `.cra/.fileignore` in the repo that is cloned and scanned. The `.fileignore` file must follow the rules of [`.gitignore` files](https://git-scm.com/docs/gitignore){: external}. Similar to a `.gitignore` file, the `.fileignore` file can include comments, directories to ignore, files to ignore, and other [patterns](https://git-scm.com/docs/gitignore#_pattern_format){: external}.
 
-The following example `.craignore` file shows how to exclude bash scripts, node_modules, and the Dockerfile.
+The following example `.fileignore` file shows how to exclude bash scripts, node_modules, and the Dockerfile.
 
 ```
 # Ignore nested functional_tests directory
@@ -297,12 +297,14 @@ node_modules
 Dockerfile
 ```
 
+*`.craignore` is being deprecated for `.fileignore`*
+
 ## Configuring Code Risk Analyzer to omit vulnerabilities
 {: #cra_omit_vulnerabilities}
 
-The Code Risk Analyzer Vulnerability task searches for a `.cracveomit` file at the root of the repo that is cloned and scanned. This file is used to specify the CVEs to either omit indefinitely, until a remediation is available, or until a specified expiration date.
+The Code Risk Analyzer Vulnerability task searches for the file path `.cra/.cveignore` in the repo that is cloned and scanned. This file is used to specify the CVEs to either omit indefinitely, until a remediation is available, or until a specified expiration date.
 
-The following example shows a JSON schema for the `.cracveomit` file.
+The following example shows a JSON schema for the `.cveignore` file.
 
 ```json
 [
@@ -315,16 +317,16 @@ The following example shows a JSON schema for the `.cracveomit` file.
 ]
 ```
 
-The following properties are accepted for each entry in the `.cracveomit` file:
+The following properties are accepted for each entry in the `.cveignore` file:
 
  * **cve** - The vulnerability to omit. The value of this property is either a CVE ID or a Snyk ID.
  * **alwaysOmit** - If this property is set to true, the vulnerability is omitted until it is changed. This property takes precedence over other property values.
  * **untilRemediationAvailable** - If this property is set to true, the vulnerability is omitted  until a remediation path is available. If a remediation becomes available, the vulnerability is not omitted and a message is displayed. This property takes precedence over the expiration property  value.
  * **expiration** - If this property is set to true and the expiration date is not reached, the vulnerability is omitted. If the expiration date is reached, the vulnerability is not omitted and a message is displayed. 
  
-The Code Risk Analyzer uses only these defined properties. You can add properties with no effect on functions. If a vulnerability that is  defined in the `.cracveomit` is ignored, a log is generated to explain the reason. If a vulnerability that is defined in the `.cracveomit` file is omitted, no log is displayed. The number of omissions and a list of the vulnerability IDs, with the package name, that are omitted are logged after a report is completed.
+The Code Risk Analyzer uses only these defined properties. You can add properties with no effect on functions. If a vulnerability that is defined in the `.cveignore` is not omitted, a log is generated explaining the reason. If a vulnerability that is defined in the `.cveignore` file is omitted, no individual logging is displayed. The number of omissions and a list of the vulnerability IDs, with the package name, that are omitted are logged after a report is completed.
 
-The following code snippet shows a sample `.cracveomit` file.
+The following code snippet shows a sample `.cveignore` file.
 
 ```json
 [
@@ -343,3 +345,5 @@ The following code snippet shows a sample `.cracveomit` file.
     }
 ]
 ```
+
+*`.cracveomit` is being deprecated for `.cveignore`*
