@@ -276,7 +276,7 @@ The following table lists and describes each of the supported environment proper
 ## Configuring Code Risk Analyzer to ignore files
 {: #cra_ignore_files}
 
-Code Risk Analyzer Discovery and CIS tasks search for the file path `.cra/.fileignore` in the repo that is cloned and scanned. The `.fileignore` file must follow the rules of [`.gitignore` files](https://git-scm.com/docs/gitignore){: external}. Similar to a `.gitignore` file, the `.fileignore` file can include comments, directories to ignore, files to ignore, and other [patterns](https://git-scm.com/docs/gitignore#_pattern_format){: external}.
+The Code Risk Analyzer Discovery and CIS tasks search for the file path `.cra/.fileignore` in the repo that is cloned and scanned. The `.fileignore` file must follow the rules of [`.gitignore` files](https://git-scm.com/docs/gitignore){: external}. Similar to a `.gitignore` file, the `.fileignore` file can include comments, directories to ignore, files to ignore, and other [patterns](https://git-scm.com/docs/gitignore#_pattern_format){: external}.
 
 The following example `.fileignore` file shows how to exclude bash scripts, node_modules, and the Dockerfile.
 
