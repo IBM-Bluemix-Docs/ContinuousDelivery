@@ -347,17 +347,17 @@ The following code snippet shows a sample `.cracveomit` file.
 ## Configuring Code Risk Analyzer to Exclude Dev Dependencies
 {: #cra_exclude_dev_dependencies}
 
-The Code Risk Analyzer Discovery and Vulnerability task use the `exclude-dev` boolean (`true` or `false`) property to exclude dev dependencies in the Vulnerability Report. If the property is set to `true`, the excluded dev dependencies will not be marked as vulernabilities in the application. 
+The Code Risk Analyzer Vulnerability task uses the `exclude-dev` boolean (`true` or `false`) property to exclude dev dependencies from the Vulnerability report. This value is defaulted to `false` and when set to `true`, will exclude any vulnerabilities from dev dependencies in the Vulnerability report. Extra configuration is required in the Code Risk Analyzer Discovery task to exclude dev dependencies for Maven and Gradle based projects from Vulnerability reports.
 
-For Maven based projects, the Code Risk Analyzer Discovery and Vulnerability task use the `maven-exclude-scopes` property to specify which scopes to exclude dependencies from the Vulnerbility Report. 
+For Maven based projects, the Code Risk Analyzer Discovery task will also require setting the `maven-exclude-scopes` property to specify which scopes to exclude dependencies for from the Vulnerbility Report. You may specify multiple scopes by setting this property to a comma separated string value.
 
-For Gradle based projects, the Code Risk Analyzer Discovery and Vulnerability task use the `gradle-exclude-configs` property to specify which gradle configurations to exclude java dependencies from the Vulnerbility Report. 
+For Gradle based projects, the Code Risk Analyzer Discovery task will also require setting the `gradle-exclude-configs` property to specify which gradle configurations to exclude java dependencies for from the Vulnerbility Report. You may specify multiple configurations by setting this property to a comma separated string value.
 
 The following table lists and describes each of the supported environment properties.
 
 | Environment Property | Description |
 |-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| exclude-dev | A Boolean (`true` or `false`) value that indicates whether to to exclude dev dependencies in scanning. |
-| maven-exclude-scopes | A String (example: `test,compile`) value that indicates which specified maven scopes to exclude dependencies in scanning. |
-| gradle-exclude-configs | A String (example: `runtimeClasspath,testCompileClasspath`) value that indicates which specified gradle configurations to exclude dependencies in scanning. |
+| exclude-dev | A Boolean (`true` or `false`) value that indicates whether to exclude dev dependencies from Code Risk Analyzer Vulnerability scans. |
+| maven-exclude-scopes | A String (example: `test,compile`) value that indicates which Maven scopes should have their corresponding dependencies marked as `dev` during Code Risk Analyzer Discovery scanning. |
+| gradle-exclude-configs | A String (example: `runtimeClasspath,testCompileClasspath`) value that indicates which Gradle configurations should have their corresponding dependencies marked as `dev` during Code Risk Analyzer Discovery scanning. |
 {: caption="Table 3. Exclude Dev Dependencies Environment properties" caption-side="top"}
