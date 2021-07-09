@@ -38,6 +38,14 @@ Download and install the [GPG command-line tools](https://www.gnupg.org/download
 
 ### OS X
  * Download and install [Mac GPG](https://gpgtools.org/){: external}
+ * Verify the minimum version of the GPG installed by using terminal, run the following:
+
+  ```
+  $ gpg --version
+  gpg (GnuPG) 2.3.1
+  libgcrypt 1.9.3
+  Copyright (C) 2021 Free Software Foundation, Inc.
+  ```
 
 ### Windows  
  * Download and install [GitBash](https://gitforwindows.org/){: external} (required for `base64` encoding)
